@@ -1,0 +1,9 @@
+{
+  "name": "brisa-ops-deploy",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-web.mjs",
+    "build:api": "node scripts/build-api.mjs",
+    "start": "node scripts/run-api.mjs"
+  }
+}
