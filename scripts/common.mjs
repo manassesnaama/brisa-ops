@@ -13,7 +13,9 @@ export function ensureSourceExtracted() {
     return sourceDir;
   }
 
-  const encoded = nodeFs.readFileSync(archiveBase64Path, 'utf8').replace(/s+/g, '');
+  const encoded = Array.from(nodeFs.readFileSync(archiveBase64Path, 'utf8'))
+    .filter((character) => character > ' ')
+    .join('');
   nodeFs.writeFileSync(archivePath, Buffer.from(encoded, 'base64'));
   nodeFs.rmSync(sourceDir, { recursive: true, force: true });
   nodeFs.mkdirSync(sourceDir, { recursive: true });
